@@ -76,9 +76,9 @@ public class Driver {
 			status.setConf(line);
 			Scan scan = new Scan();
 			conf.set("hbase.mapreduce.scan", convertScanToString(scan));
-			Job job = new org.apache.hadoop.mapred.jobcontrol.Job(new JobConf(conf))
+			Job job = new Job(new JobConf(conf));
 			job.setJarByClass(Driver.class);
-			job.setMapperClass();
+			job.setMapperClass(Mapper.class);
 			job.setMapOutputKeyClass(Text.class);
 			job.setMapOutputValueClass(Text.class);
 		    job.setOutputFormatClass(TextOutputFormat.class);
